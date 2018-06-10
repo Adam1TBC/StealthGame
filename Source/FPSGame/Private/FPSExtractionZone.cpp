@@ -47,11 +47,11 @@ void AFPSExtractionZone::HandleOverlap(UPrimitiveComponent* OverlappedComponent,
 		AFPSGameMode* GM = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
 
 		if (GM) {
-			GM->CompleteMission(MyPawn);
+			GM->CompleteMission(MyPawn, true);
 		}
 	}
 	else {
-		UGameplayStatics::PlaySound2D(this, ObjectiveMissingSound);
+		UGameplayStatics::PlaySound2D(this, ObjectiveMissingSound, 0.2f);
 	}
 
 	UE_LOG(LogTemp, Log, TEXT("Overlapped with extraction zone!"));

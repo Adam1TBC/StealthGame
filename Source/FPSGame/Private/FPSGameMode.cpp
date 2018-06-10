@@ -21,8 +21,10 @@ void AFPSGameMode::CompleteMission(APawn* InstigatorPawn)
 	if (InstigatorPawn) {
 		InstigatorPawn->DisableInput(nullptr);
 
+		//If this class exists on the map
 		if (SpectatingViewpointClass) {
 
+			//Getting all actors of this class
 			TArray<AActor*> ReturnedActors;
 			UGameplayStatics::GetAllActorsOfClass(this, SpectatingViewpointClass, ReturnedActors);
 
@@ -32,6 +34,7 @@ void AFPSGameMode::CompleteMission(APawn* InstigatorPawn)
 
 				APlayerController* PC = Cast<APlayerController>(InstigatorPawn->GetController());
 				if (PC) {
+					//Changing target using effect
 					PC->SetViewTargetWithBlend(NewViewTarget, 0.5f, EViewTargetBlendFunction::VTBlend_Cubic);
 				}
 			}

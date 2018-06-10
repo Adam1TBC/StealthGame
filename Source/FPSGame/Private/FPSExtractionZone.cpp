@@ -17,6 +17,7 @@ AFPSExtractionZone::AFPSExtractionZone()
 
 	OverlapComp = CreateDefaultSubobject<UBoxComponent>(TEXT("OverlapComp"));
 	OverlapComp->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	// Only player can get collision of that
 	OverlapComp->SetCollisionResponseToAllChannels(ECR_Ignore);
 	OverlapComp->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);
 	OverlapComp->SetBoxExtent(FVector(200.0f));
@@ -42,7 +43,7 @@ void AFPSExtractionZone::HandleOverlap(UPrimitiveComponent* OverlappedComponent,
 	}
 	
 	if (MyPawn->bIsCarryingObjective) {
-
+		//Get GameMode 
 		AFPSGameMode* GM = Cast<AFPSGameMode>(GetWorld()->GetAuthGameMode());
 
 		if (GM) {

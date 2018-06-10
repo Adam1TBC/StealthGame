@@ -40,6 +40,7 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
 	}
 
+	//Noise for the AIGuard 
 	MakeNoise(0.3f, Instigator);
 	
 

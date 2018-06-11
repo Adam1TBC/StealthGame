@@ -41,9 +41,7 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	}
 
 	//Noise for the AIGuard 
-	MakeNoise(0.3f, Instigator);
+	MakeNoise(1.0f, Instigator);
 	
-
-
 	Destroy();
 }

@@ -6,10 +6,18 @@
 #include "GameFramework/Character.h"
 #include "FPSAIGuard.generated.h"
 
+UENUM(BlueprintType)
+enum class EAIState : uint8
+{
+	Idle,
+	Suspicious,
+	Alerted
+};
+
 UCLASS()
 class FPSGAME_API AFPSAIGuard : public ACharacter
 {
-	GENERATED_BODY()
+	GENERATED_BODY() // This error is just a bug of vusial studio
 
 public:
 	// Sets default values for this character's properties
@@ -34,6 +42,13 @@ protected:
 	void ResetOrientation();
 
 	FTimerHandle TimerHandle_ResetOrientation;
+
+	EAIState GuardState;
+
+	void SetGuardState(EAIState NewState);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnStateChanged(EAIState NewState);
 
 public:	
 	// Called every frame

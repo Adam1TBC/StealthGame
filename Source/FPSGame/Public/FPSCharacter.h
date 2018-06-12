@@ -59,6 +59,7 @@ protected:
 	/** Fires a projectile. */
 	void Fire();
 
+
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
@@ -66,6 +67,9 @@ protected:
 	void MoveRight(float Val);
 
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
+	
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerFire();
 
 public:
 	/** Returns Mesh1P subobject **/
